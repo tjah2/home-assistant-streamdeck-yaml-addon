@@ -64,6 +64,7 @@ The configuration file includes the following parameters:
 - 🔒 `websocket_protocol`: The WebSocket protocol to use (`ws` for unsecured, `wss` for secured).
 - 🏠 `hass_host` (optional): The IP address of your Home Assistant instance. If not provided, the add-on will automatically use the IP address of the host running the add-on.
 - 🔑 `hass_token` (optional): The long-lived access token for your Home Assistant instance. If not provided, the add-on will automatically use the Supervisor API token.
+- 🖼️ `immich_api_key` (optional): API key for an [Immich](https://immich.app) album in the photo screensaver (`screensaver: immich:` in your Stream Deck configuration). Kept out of the configuration file. Works with both options below.
 
 ### Option 2: Using a `.env` file for configuration
 
