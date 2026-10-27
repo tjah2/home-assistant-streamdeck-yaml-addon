@@ -1,9 +1,9 @@
 ---
-name: Home Assistant Stream Deck
-version: "2026.5.0"
-slug: home-assistant-streamdeck-yaml
+name: Home Assistant Stream Deck (tjah2)
+version: "2026.5.2.post1"
+slug: home-assistant-streamdeck-yaml-tjah2
 description: >
-  This add-on allows you to control your Home Assistant
+  Fork with a photo screensaver and working !include. This add-on allows you to control your Home Assistant
   instance via a Stream Deck, making it easier than ever to
   manage your smart home devices and scenes 🏠. The add-on is highly
   customizable and configured using YAML files. It runs on the
@@ -14,7 +14,7 @@ description: >
   more details. Also check out the add-on documentation
   (https://basnijholt.github.io/home-assistant-streamdeck-yaml-addon/) for
   add-on configuration details.
-url: https://github.com/basnijholt/home-assistant-streamdeck-yaml-addon
+url: https://github.com/tjah2/home-assistant-streamdeck-yaml-addon
 hassio_api: true
 homeassistant_api: true
 host_network: true

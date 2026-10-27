@@ -38,11 +38,14 @@ if [[ -n "${streamdeck_dotenv}" ]]; then
         bashio::log.info "🔍 Detected an absolute path for STREAMDECK_CONFIG: ${streamdeck_config_from_env}"
     fi
 
-    bashio::log.info "📂 Copying the Stream Deck YAML configuration file to the add-on: ${streamdeck_config_from_env}"
-    cp "${streamdeck_config_from_env}" /app/configuration.yaml
-
-    # Remove STREAMDECK_CONFIG line from /app/.env file
-    sed -i "/^STREAMDECK_CONFIG/d" /app/.env
+    # Use the configuration file where it is (no copy), so that `!include` finds
+    # the included files next to it and `auto_reload` sees changes.
+    if [[ ! -f "${streamdeck_config_from_env}" ]]; then
+        bashio::log.red "❌ Error: The Stream Deck YAML configuration file does not exist: ${streamdeck_config_from_env}"
+        exit 1
+    fi
+    bashio::log.info "📂 Using the Stream Deck YAML configuration file: ${streamdeck_config_from_env}"
+    sed -i "s#^STREAMDECK_CONFIG=.*#STREAMDECK_CONFIG=${streamdeck_config_from_env}#" /app/.env
 else
     # Use automatic values for hass_host and hass_token if they are empty
     if [[ -z "${hass_host}" ]]; then
@@ -72,9 +75,13 @@ else
         echo "STREAMDECK_CONFIG=$streamdeck_config"
         echo "WEBSOCKET_PROTOCOL=$websocket_protocol"
     } > /app/.env
-    # Copy the Stream Deck YAML configuration file to the add-on
-    bashio::log.info "📂 Copying the Stream Deck YAML configuration file to the add-on: ${streamdeck_config}"
-    cp "${streamdeck_config}" /app/configuration.yaml
+    # Use the configuration file where it is (no copy), so that `!include` finds
+    # the included files next to it and `auto_reload` sees changes.
+    if [[ ! -f "${streamdeck_config}" ]]; then
+        bashio::log.red "❌ Error: The Stream Deck YAML configuration file does not exist: ${streamdeck_config}"
+        exit 1
+    fi
+    bashio::log.info "📂 Using the Stream Deck YAML configuration file: ${streamdeck_config}"
 fi
 
 bashio::log.info "✅ Finished the config overwriting."
