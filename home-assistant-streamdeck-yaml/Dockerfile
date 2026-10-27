@@ -7,7 +7,11 @@ ARG BUILD_ARCH=amd64
 ARG BUILD_DATE
 ARG BUILD_REF
 ARG BUILD_VERSION
-ARG VERSION=2026.5.0
+ARG VERSION=2026.5.2.post1
+# Fork van basnijholt/home-assistant-streamdeck-yaml met o.a. een foto-screensaver.
+# Een vaste commit, zodat elke installatie precies dezelfde code krijgt.
+ARG REPO=tjah2/home-assistant-streamdeck-yaml
+ARG COMMIT=964141141aa6501a6cfa77cb3b467f7156dce239
 
 # Install runtime dependencies and build dependencies
 # hadolint ignore=DL3018,DL3003
@@ -48,12 +52,12 @@ RUN apk --no-cache add \
     unzip \
     wget \
     # Download and install the application
-    && echo "Downloading version ${VERSION}..." \
-    && wget -nv https://github.com/basnijholt/home-assistant-streamdeck-yaml/archive/refs/tags/v${VERSION}.zip -O /tmp/v${VERSION}.zip \
+    && echo "Downloading ${REPO} at ${COMMIT} (version ${VERSION})..." \
+    && wget -nv https://github.com/${REPO}/archive/${COMMIT}.zip -O /tmp/app.zip \
     && echo "Unzipping..." \
-    && unzip /tmp/v${VERSION}.zip -d /tmp \
-    && mv /tmp/home-assistant-streamdeck-yaml-${VERSION} /app \
-    && rm /tmp/v${VERSION}.zip \
+    && unzip /tmp/app.zip -d /tmp \
+    && mv /tmp/home-assistant-streamdeck-yaml-${COMMIT} /app \
+    && rm /tmp/app.zip \
     # Install Python dependencies
     && cd /app \
     && SETUPTOOLS_SCM_PRETEND_VERSION=${VERSION} pip install --no-cache-dir --break-system-packages -e "." \
