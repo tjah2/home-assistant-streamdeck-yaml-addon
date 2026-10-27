@@ -1,6 +1,6 @@
 ---
 name: Home Assistant Stream Deck (tjah2)
-version: "2026.5.2.post2"
+version: "2026.5.2.post3"
 slug: home-assistant-streamdeck-yaml-tjah2
 description: >
   Fork with a photo screensaver and working !include. This add-on allows you to control your Home Assistant
@@ -43,9 +43,11 @@ options:
   hass_host: ""
   hass_token: ""
   streamdeck_dotenv: ""
+  immich_api_key: ""
 schema:
   streamdeck_config: str?
   websocket_protocol: str?
   hass_host: str?
   hass_token: password?
   streamdeck_dotenv: str?
+  immich_api_key: password?

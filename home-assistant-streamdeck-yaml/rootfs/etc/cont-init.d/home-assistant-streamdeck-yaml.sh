@@ -11,6 +11,7 @@ hass_token=$(bashio::config "hass_token")
 streamdeck_config=$(bashio::config "streamdeck_config")
 websocket_protocol=$(bashio::config "websocket_protocol")
 streamdeck_dotenv=$(bashio::config "streamdeck_dotenv")
+immich_api_key=$(bashio::config "immich_api_key")
 
 if [[ -n "${streamdeck_dotenv}" ]]; then
     if [[ -e "${streamdeck_dotenv}" ]]; then
@@ -82,6 +83,14 @@ else
         exit 1
     fi
     bashio::log.info "📂 Using the Stream Deck YAML configuration file: ${streamdeck_config}"
+fi
+
+# The Immich API key for the screensaver (works with both ways of configuring)
+if [[ -n "${immich_api_key}" ]]; then
+    bashio::log.info "🖼️ Using the Immich API key from the add-on configuration"
+    sed -i '/^IMMICH_API_KEY=/d' /app/.env
+    [[ -n "$(tail -c1 /app/.env)" ]] && echo >> /app/.env  # a copied .env may lack the last newline
+    echo "IMMICH_API_KEY=${immich_api_key}" >> /app/.env
 fi
 
 bashio::log.info "✅ Finished the config overwriting."
