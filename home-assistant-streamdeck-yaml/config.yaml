@@ -1,6 +1,6 @@
 ---
 name: Home Assistant Stream Deck (tjah2)
-version: "2026.5.2.post1"
+version: "2026.5.2.post2"
 slug: home-assistant-streamdeck-yaml-tjah2
 description: >
   Fork with a photo screensaver and working !include. This add-on allows you to control your Home Assistant

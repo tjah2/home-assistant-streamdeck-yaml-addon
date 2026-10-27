@@ -2,6 +2,7 @@
 
 > **About this fork:** this add-on installs [tjah2/home-assistant-streamdeck-yaml](https://github.com/tjah2/home-assistant-streamdeck-yaml), a fork of Bas Nijholt's application with a **photo screensaver** (see `screensaver:` in its README).
 > It also loads your configuration file where it is instead of copying it, so **`!include` and `auto_reload` work**.
+> The image is lighter and starts faster: Python packages come prebuilt from Alpine (no compiler), and all Material Design Icons are built in, so icons are no longer downloaded on every start and also work without internet.
 > Add `https://github.com/tjah2/home-assistant-streamdeck-yaml-addon` under *Settings → Add-ons → Add-on Store → ⋮ → Repositories*.
 > Only one add-on can use the Stream Deck at a time: stop the original add-on before starting this one.
 
