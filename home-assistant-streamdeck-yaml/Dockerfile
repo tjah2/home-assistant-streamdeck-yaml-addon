@@ -11,7 +11,7 @@ ARG VERSION=2026.5.2.post5
 # Fork van basnijholt/home-assistant-streamdeck-yaml met o.a. een foto-screensaver.
 # Een vaste commit, zodat elke installatie precies dezelfde code krijgt.
 ARG REPO=tjah2/home-assistant-streamdeck-yaml
-ARG COMMIT=e20403c81a54881e670301244b75eab7d85db792
+ARG COMMIT=f3f0c835bf5348fddc486c51324d6a75f29a2530
 
 # Material Design Icons: alle iconen zitten in het image (assets/mdi.zip), zodat
 # de add-on ze niet bij elke start opnieuw van GitHub hoeft te downloaden (Home
